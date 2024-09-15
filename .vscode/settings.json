@@ -1,3 +1,10 @@
 {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "C_Cpp.default.includePath": [
+        "${env:LLVM_MOS_PATH}/mos-platform/commodore/include"
+    ],
+    "files.associations": {
+        "*.ld": "linkerscript",
+        "cbm.h": "c"
+    }
 }

@@ -1,8 +1,8 @@
 PROJECT= 	m65inf
 
-CC=			$(LLVM_MOS_PATH)/bin/mos-c64-clang
-CCOPTS=		-Os -Wall
-LDOPTS=		-lexit-return -Wl','-Map','$(PROJECT).map
+CC=			$(LLVM_MOS_PATH)/bin/mos-mega65-clang
+COPTS=		-Os -Wall
+LOPTS=		-lexit-return -Wl','-Map','$(PROJECT).map
 
 SOURCES=	main.c 
 
@@ -11,7 +11,10 @@ HEADERS=	Makefile
 all: $(PROJECT).prg $(HEADERS)
 
 $(PROJECT).prg:	$(SOURCES) 
-	$(CC) $(CCOPTS) -o $@ $^ $(LDOPTS)
+	$(CC) $(COPTS) -o $@ $^ $(LOPTS)
+
+asm: $(SOURCES)
+	$(CC) $(COPTS) -o $(PROJECT).asm $^ -Wl','--lto-emit-asm
 
 clean:
 	rm -f *.s *.prg *.o *.map *.mem *.out *.elf
