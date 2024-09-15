@@ -1,6 +1,6 @@
 PROJECT= 	m65inf
 
-CC=			$(LLVM_MOS_PATH)/bin/mos-c64-clang.bat
+CC=			$(LLVM_MOS_PATH)/bin/mos-c64-clang
 CCOPTS=		-Os -Wall
 LDOPTS=		-lexit-return -Wl','-Map','$(PROJECT).map
 
