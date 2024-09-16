@@ -3,6 +3,7 @@
     "C_Cpp.default.includePath": [
         "${env:LLVM_MOS_PATH}/mos-platform/commodore/include"
     ],
+    "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
     "files.associations": {
         "*.ld": "linkerscript",
         "cbm.h": "c"
