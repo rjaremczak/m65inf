@@ -1,6 +1,6 @@
 PROJECT= 	m65inf
 
-CC=			$(LLVM_MOS_PATH)/bin/mos-mega65-clang
+CC=			$(LLVM_MOS_PATH)/bin/mos-clang --config mos-mega65.cfg
 COPTS=		-Os -Wall
 LOPTS=		-lexit-return -Wl','-Map','$(PROJECT).map
 
