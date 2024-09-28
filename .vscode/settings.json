@@ -1,10 +1,14 @@
 {
     "editor.formatOnSave": true,
     "C_Cpp.default.includePath": [
+        "${env:LLVM_MOS_PATH}/lib/clang/19/include",
+        "${env:LLVM_MOS_PATH}/mos-platform/common/include",
         "${env:LLVM_MOS_PATH}/mos-platform/commodore/include"
     ],
     "files.associations": {
         "*.ld": "linkerscript",
-        "cbm.h": "c"
+        "cbm.h": "c",
+        "stdio.h": "c",
+        "stdint.h": "c"
     }
 }
