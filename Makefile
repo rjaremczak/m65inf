@@ -22,7 +22,6 @@ clean:
 xemu_run: $(PROJECT).prg
 	xmega65 -prg $(PROJECT).prg -besure
 
-
 run: $(PROJECT).prg
 	$(MEGA65_TOOLS)/etherload -r $(PROJECT).prg
 

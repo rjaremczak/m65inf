@@ -6,6 +6,6 @@ int main(void)
 {
     cbm_k_chrout(0x8e);
     // *(uint8_t *)0xd018 = 0x15;
-    puts("hello to ja!");
+    puts("hello to ja jeszcze raz!");
     return 0;
 }
