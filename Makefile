@@ -19,8 +19,12 @@ asm: $(SOURCES)
 clean:
 	rm -f *.s *.prg *.o *.map *.mem *.out *.elf
 
-run: $(PROJECT).prg
+xemu_run: $(PROJECT).prg
 	xmega65 -prg $(PROJECT).prg -besure
+
+
+run: $(PROJECT).prg
+	$(MEGA65_TOOLS)/etherload -r $(PROJECT).prg
 
 dump:
 	$(LLVM_MOS_PATH)/bin/llvm-objdump -d --print-imm-hex $(PROJECT).prg.elf
