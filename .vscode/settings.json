@@ -1,7 +1,7 @@
 {
     "editor.formatOnSave": true,
     "C_Cpp.default.includePath": [
-        "${env:LLVM_MOS_PATH}/lib/clang/19/include",
+        "${env:LLVM_MOS_PATH}/lib/clang/20/include",
         "${env:LLVM_MOS_PATH}/mos-platform/common/include",
         "${env:LLVM_MOS_PATH}/mos-platform/commodore/include"
     ],

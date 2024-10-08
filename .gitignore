@@ -36,3 +36,4 @@
 *.map
 *.prg
 *.elf
+*.dump.asm

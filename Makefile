@@ -4,7 +4,7 @@ CC=			$(LLVM_MOS_PATH)/bin/mos-clang --config mos-mega65.cfg
 COPTS=		-Os -Wall
 LOPTS=		-lexit-return -Wl','-Map','$(PROJECT).map
 
-SOURCES=	main.c 
+SOURCES=	src/main.c src/hyppo.s
 
 HEADERS=	Makefile 
 
@@ -17,13 +17,13 @@ asm: $(SOURCES)
 	$(CC) $(COPTS) -o $(PROJECT).asm $^ -Wl','--lto-emit-asm
 
 clean:
-	rm -f *.s *.prg *.o *.map *.mem *.out *.elf
+	rm -f *.s *.prg *.o *.map *.mem *.out *.elf *.asm
 
-xemu_run: $(PROJECT).prg
+xemu: $(PROJECT).prg
 	xmega65 -prg $(PROJECT).prg -besure
 
-run: $(PROJECT).prg
+upload: $(PROJECT).prg
 	$(MEGA65_TOOLS)/etherload -r $(PROJECT).prg
 
 dump:
-	$(LLVM_MOS_PATH)/bin/llvm-objdump -d --print-imm-hex $(PROJECT).prg.elf
+	$(LLVM_MOS_PATH)/bin/llvm-objdump -d --print-imm-hex $(PROJECT).prg.elf > $(PROJECT).dump.asm
