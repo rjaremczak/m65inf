@@ -8,7 +8,7 @@ SOURCES=	src/main.c src/hyppo.s
 
 HEADERS=	Makefile 
 
-all: $(PROJECT).prg $(HEADERS)
+all: $(PROJECT).prg $(HEADERS) dump
 
 $(PROJECT).prg:	$(SOURCES) 
 	$(CC) $(COPTS) -o $@ $^ $(LOPTS)
