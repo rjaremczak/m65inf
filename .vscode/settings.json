@@ -10,6 +10,7 @@
         "*.ld": "linkerscript",
         "cbm.h": "c",
         "stdio.h": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "hyppo.h": "c"
     }
 }

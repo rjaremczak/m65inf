@@ -22,7 +22,7 @@ clean:
 xemu: $(PROJECT).prg
 	xmega65 -prg $(PROJECT).prg -besure
 
-upload: $(PROJECT).prg
+mega: $(PROJECT).prg
 	$(MEGA65_TOOLS)/etherload -r $(PROJECT).prg
 
 dump:

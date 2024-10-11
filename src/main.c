@@ -2,21 +2,20 @@
 #include <stdio.h>
 #include <cbm.h>
 
-struct hyppo_version
-{
-    uint16_t minor;
-    uint16_t major;
-};
-
-uint16_t hyppo_getversion(void);
+#include "hyppo.h"
 
 int main(void)
 {
     cbm_k_chrout(0x8e);
-    // struct hyppo_version hver = hyppo_getversion();
-    // uint32_t hv = 0x1234abcd;
-    uint8_t v = hyppo_getversion();
-    //  *(uint8_t *)0xd018 = 0x15;
-    printf("hyppo version: %04x", 0x112f);
+    struct hyppo_version hv;
+    uint8_t err = hyppo_getversion(&hv);
+    if (err)
+    {
+        printf("\x05hyppo error: \x96%02x", err);
+    }
+    else
+    {
+        printf("\x05hyppo:\x9e%02x.%02x\x05 hdos:\x9e%02x.%02x\x05", hv.hyppo_major, hv.hyppo_minor, hv.hdos_major, hv.hdos_minor);
+    }
     return 0;
 }
