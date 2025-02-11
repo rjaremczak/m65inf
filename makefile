@@ -4,9 +4,9 @@ CC=			$(LLVM_MOS_PATH)/bin/mos-clang --config mos-mega65.cfg
 COPTS=		-Os -Wall
 LOPTS=		-lexit-return -Wl','-Map','$(PROJECT).map
 
-SOURCES=	src/main.c src/hyppo.s
+SOURCES=	src/main.c src/hyppo.asm
 
-HEADERS=	Makefile 
+HEADERS=	makefile 
 
 all: $(PROJECT).prg $(HEADERS) dump
 
@@ -23,6 +23,9 @@ xemu: $(PROJECT).prg
 	xmega65 -prg $(PROJECT).prg -besure
 
 mega: $(PROJECT).prg
+	$(MEGA65_TOOLS)/m65 -r $(PROJECT).prg
+
+ether_mega: $(PROJECT).prg
 	$(MEGA65_TOOLS)/etherload -r $(PROJECT).prg
 
 dump:
