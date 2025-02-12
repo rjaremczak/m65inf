@@ -19,7 +19,7 @@ hyppo_getversion:
     bcs ok
     jmp hyppo_geterrorcode_raw
 ok:
-    stq [__rc2]
+    stq (__rc2)
     plz
     lda #0
     rts

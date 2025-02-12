@@ -7,6 +7,7 @@
 int main(void)
 {
     cbm_k_chrout(0x8e);
+    printf("mega65 info\n");
     struct hyppo_version hv;
     uint8_t err = hyppo_getversion(&hv);
     if (err)

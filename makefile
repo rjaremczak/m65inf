@@ -8,7 +8,7 @@ SOURCES=	src/main.c src/hyppo.asm
 
 HEADERS=	makefile 
 
-all: $(PROJECT).prg $(HEADERS) dump
+all: $(PROJECT).prg $(HEADERS)
 
 $(PROJECT).prg:	$(SOURCES) 
 	$(CC) $(COPTS) -o $@ $^ $(LOPTS)
@@ -16,8 +16,12 @@ $(PROJECT).prg:	$(SOURCES)
 asm: $(SOURCES)
 	$(CC) $(COPTS) -o $(PROJECT).asm $^ -Wl','--lto-emit-asm
 
+test: src/test.asm
+	$(LLVM_MOS_PATH)/bin/llvm-mc --mcpu=mos45gs02 --filetype=asm --show-encoding $^
+	# $(LLVM_MOS_PATH)/bin/llvm-objdump --disassemble test.o
+
 clean:
-	rm -f *.s *.prg *.o *.map *.mem *.out *.elf *.asm
+	rm -f *.s *.prg *.o *.map *.mem *.out *.elf *.asm *.hex *.bin
 
 xemu: $(PROJECT).prg
 	xmega65 -prg $(PROJECT).prg -besure
