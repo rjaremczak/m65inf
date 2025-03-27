@@ -1,22 +1,22 @@
 PROJECT= 	m65inf
 
 CC=			$(LLVM_MOS_PATH)/bin/mos-clang --config mos-mega65.cfg
-COPTS=		-Os -Wall
+COPTS=		-v -Os -Wall
 LOPTS=		-lexit-return -Wl','-Map','$(PROJECT).map
 
-SOURCES=	src/main.c src/hyppo.asm
+SOURCES=	src/main.c src/hyppo.s
 
 HEADERS=	makefile 
 
 all: $(PROJECT).prg $(HEADERS)
 
-$(PROJECT).prg:	$(SOURCES) 
-	$(CC) $(COPTS) -o $@ $^ $(LOPTS)
+$(PROJECT).prg:	$(SOURCES)
+	$(CC) $(COPTS) $(LOPTS) -o $@ $(SOURCES)
 
 asm: $(SOURCES)
-	$(CC) $(COPTS) -o $(PROJECT).asm $^ -Wl','--lto-emit-asm
+	$(CC) $(COPTS) -o $(PROJECT).s $^ -Wl','--lto-emit-asm
 
-test: src/test.asm
+test: src/test.s
 	$(LLVM_MOS_PATH)/bin/llvm-mc --mcpu=mos45gs02 --filetype=asm --show-encoding $^
 	# $(LLVM_MOS_PATH)/bin/llvm-objdump --disassemble test.o
 
